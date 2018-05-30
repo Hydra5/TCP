@@ -10,7 +10,7 @@ TCP
 
 2、运行
 
-　　client端：./client IP地址 <端口号> <上传文件名>
+　　client端：./client <serverIP地址> <端口号> <上传文件名>
 
 　　server端：./server <端口号> <保存为文件名>
 
