@@ -1,0 +1,39 @@
+需要利用C语言的时间函数time和localtime
+
+一、函数接口介绍：
+
+1、time函数。
+
+形式为time_t time (time_t *__timer);
+
+其中time_t为time.h定义的结构体，一般为长整型。
+
+这个函数会获取当前时间，并返回。 如果参数__timer非空，会存储相同值到__timer指向的内存中。 
+
+time函数返回的为unix时间戳，即从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数，不考虑闰秒。
+
+由于是秒作为单位的，所以这并不是习惯上的时间，要转为习惯上的年月日时间形式就需要另外一个函数了。
+
+2、localtime函数。
+
+形式为struct tm *localtime (const time_t *__timer)；
+
+其中tm为一个结构体，包含了年月日时分秒等信息。
+
+这种结构是适合用来输出的。
+
+二、参考代码：
+
+#include <stdio.h>
+#include <time.h>
+int main ()
+{
+    time_t t;
+    struct tm * lt;
+    time (&t);//获取Unix时间戳。
+    lt = localtime (&t);//转为时间结构。
+    printf ( "%d/%d/%d %d:%d:%d\n",lt->tm_year+1900, lt->tm_mon, lt->tm_mday, lt->tm_hour, lt->tm_min, lt->tm_sec);//输出结果
+    return 0;
+}
+注意事项：
+struct tm中的tm_year 值为实际年减去1900， 所以输出的时候要是lt->tm_year+1900。
