@@ -1,0 +1,23 @@
+找两个机器,一个作为qperf的服务器端,(服务器ip地址是192.168.4.27)
+如下:
+[root@localhost ~]# qperf  
+------>>>>>系统会一直停在这个地方.  
+
+另外一个作为qperf的客户端:
+[root@localhost ~]# qperf -t 60 --use_bits_per_sec  192.168.80.50 tcp_bw  
+tcp_bw:  
+    bw  =  1.15 Gb/sec --------->>>这就是网络带宽  
+[root@localhost ~]#   
+
+[root@localhost ~]# qperf -t 60 --use_bits_per_sec  192.168.80.50 tcp_lat  
+tcp_lat:  
+    latency  =  190 us --------->>>这就是网络延迟  
+
+
+
+[root@localhost ~]# qperf -t 60 --use_bits_per_sec  192.168.80.50 tcp_bw tcp_lat  
+tcp_bw:  
+    bw  =  1.58 Gb/sec--------->>>这就是网络带宽  
+tcp_lat:  
+    latency  =  186 us--------->>>这就是网络延迟  
+[root@localhost ~]#  
