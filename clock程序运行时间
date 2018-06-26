@@ -1,6 +1,6 @@
 #include<stdio.h>           
 #include <time.h>               /*要包含的头文件*/
-
+//clock()该程序从启动到函数调用占用CPU的时间。这个函数返回从“开启这个程序进程”到“程序中调用clock()函数”时之间的CPU时钟计时单元（clock tick）数，
 int main(int argc, char *argv[])
 {
     /* Init  */
