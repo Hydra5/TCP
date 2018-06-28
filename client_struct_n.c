@@ -1,4 +1,4 @@
-//´«Êä¶à¸ö½á¹¹Ìå 
+//Â´Â«ÃŠÃ¤Â¶Ã Â¸Ã¶Â½Ã¡Â¹Â¹ÃŒÃ¥ 
 
 #include <stdio.h>  
 #include <string.h>  
@@ -11,7 +11,6 @@
 #include <netinet/in.h>  
 #include <arpa/inet.h>
 #include <time.h> 
-//#include<sys/time.h> 
   
 #define    MAXLINE        1024  
 
@@ -34,20 +33,12 @@ int client(char *IP,char * port,t_patic_send *data, int n )
     int                    sock_id;  
     int                    read_len;  
     int                    send_len;  
-    //FILE                   *fp;  
     int                    i_ret; 
     struct timeval  tv_start,tv_end;
     double  delta_time;
 
     gettimeofday(&tv_start,NULL);
     
-    //if ((fp = fopen(name,"r")) == NULL) 
-    //{  
-    // perror("Open file failed\n");  
-    // exit(0);  
-    //}  
-
-      
 /*<-----------------------------------------socket---------------------------------------------->*/
     if ((sock_id = socket(AF_INET,SOCK_STREAM,0)) < 0) {  
         perror("Create socket failed\n");  
@@ -82,8 +73,7 @@ int client(char *IP,char * port,t_patic_send *data, int n )
 		} 
 		bzero(buf, MAXLINE);
 	}		
-  
-    // fclose(fp);  
+ 
     close(sock_id);
     
     gettimeofday(&tv_end,NULL);
@@ -93,13 +83,13 @@ int client(char *IP,char * port,t_patic_send *data, int n )
     return 0;  
 }  
 int main(){
-  char *IP ="192.168.4.27";
-  char *port ="1234";
+  char *IP = "192.168.4.27";
+  char *port = "1234";
   t_patic_send  data[100];
   int i = 0;
   for(;i<100;i++){
-	  data[i].Nr=i;
-	  data[i]->type=i;
+	  data[i].Nr = i;
+	  data[i]->type = &i;
   }
   int n = 100;
   client(IP,port,data,n);
