@@ -99,7 +99,7 @@ int main(){
   int i = 0;
   for(;i<100;i++){
 	  data[i].Nr=i;
-	  data[i]->type=&i;
+	  data[i].type=&i;
   }
   int n = 100;
   client(IP,port,data,n);
